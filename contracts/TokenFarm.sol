@@ -71,7 +71,7 @@ contract TokenFarm is Ownable {
     }
 
     function unstakeTokens(address _token) public {
-        uint256 balance = stakeBalance[_token][msg.sender];
+        uint256 balance = stakingBalance[_token][msg.sender];
         require(balance > 0, "Staking balance cannot be 0");
         IERC20(_token).transfer(msg.sender, balance);
         stakingBalance[_token][msg.sender] = 0;

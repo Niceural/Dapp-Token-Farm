@@ -6,3 +6,12 @@ compiler:
     remappings:
       - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.5.0"
       - "@chainlink=smartcontractkit/chainlink@1.2.1"
+networks:
+  development:
+    verify: False
+  ganache:
+    verify: False
+  kovan:
+    verify: True
+    weth_token: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    fau_token: "0xFab46E002BbF0b4509813474841E0716E6730136"
