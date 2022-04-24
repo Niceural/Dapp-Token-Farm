@@ -3,19 +3,30 @@ from brownie import (
     accounts,
     config,
     interface,
-    #LinkToken,
+    LinkToken,
     MockV3Aggregator,
     MockWETH,
     MockDAI,
     Contract,
 )
-from scripts.constants import (
-    INITIAL_PRICE_FEED_VALUE, 
-    DECIMALS,
-    NON_FORKED_LOCAL_BLOCKCHAIN_ENVIRONMENTS,
-    LOCAL_BLOCKCHAIN_ENVIRONMENTS,
-    contract_to_mock,
-)
+
+INITIAL_PRICE_FEED_VALUE = 2000000000000000000000
+DECIMALS = 18
+
+NON_FORKED_LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["hardhat", "development", "ganache"]
+LOCAL_BLOCKCHAIN_ENVIRONMENTS = NON_FORKED_LOCAL_BLOCKCHAIN_ENVIRONMENTS + [
+    "mainnet-fork",
+    "binance-fork",
+    "matic-fork",
+]
+
+contract_to_mock = {
+    "eth_usd_price_feed": MockV3Aggregator,
+    "dai_usd_price_feed": MockV3Aggregator,
+    "fau_token": MockDAI,
+    "weth_token": MockWETH,
+}
+
 
 def get_account(index=None, id=None):
     if index:
